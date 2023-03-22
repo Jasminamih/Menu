@@ -1,19 +1,19 @@
 import BackBtn from "@/components/BackBtn/BackBtn";
-import { CompanyInterface } from "@/components/CompanyDetails/CompanyDetails";
-import { CategoryInterface } from "@/components/CategoryCard/CategoryCard";
-import { Categories } from "@/components/ProductCard/ProductCard";
-import ItemsList from "@/components/ProductsList/ProductsList";
 import Logo from "@/components/LogoBanner/LogoBanner";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import React, { FC } from "react";
+import { ProductsInterface } from "@/interfaces/ProductsInterface";
+import { CategoryInterface } from "@/interfaces/CategoryInterface";
+import { CompanyInterface } from "@/interfaces/CompanyInterface";
+import ProductsList from "@/components/ProductsList/ProductsList";
 
 interface Props {
-  details: Categories[];
-  menu: CategoryInterface[];
+  products: ProductsInterface[];
+  category: CategoryInterface[];
   company: CompanyInterface;
 }
-const CategoryPage: FC<Props> = ({ details, menu, company }) => {
+const CategoryPage: FC<Props> = ({ products, category, company }) => {
   return (
     <>
       <Head>
@@ -25,7 +25,7 @@ const CategoryPage: FC<Props> = ({ details, menu, company }) => {
       <main>
         <Logo company={company} />
         <BackBtn />
-        <ItemsList categories={details} menu={menu} company={company} />
+        <ProductsList products={products} category={category} company={company} />
       </main>
     </>
   );
@@ -51,13 +51,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const res = await fetch(
       `https://nomad-cloud.in/api/categorieForProducts/${params.id}`
     );
-    const details = await res.json();
-    const resMenu = await fetch(`https://nomad-cloud.in/api/menu`);
-  const resCompany = await fetch(`https://nomad-cloud.in/api/companie`);
-  const company = await resCompany.json();
+    const products = await res.json();
+    const resCategory = await fetch(`https://nomad-cloud.in/api/menu`);
+    const resCompany = await fetch(`https://nomad-cloud.in/api/companie`);
+    const company = await resCompany.json();
 
-    const menu = await resMenu.json();
-    if (Object.keys(details).length === 0) {
+    const category = await resCategory.json();
+    if (Object.keys(products).length === 0) {
       return {
         notFound: true,
       };
@@ -65,9 +65,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     return {
       props: {
-        details,
+        products,
         company,
-        menu,
+       category,
       },
     };
   }

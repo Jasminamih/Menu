@@ -4,15 +4,9 @@ import { F_Roboto } from "@/fonts";
 import { TfiLocationPin } from "react-icons/Tfi";
 import { TbPhone } from "react-icons/Tb";
 import { FaWifi } from "react-icons/Fa";
-import { CategoryInterface } from "../CategoryCard/CategoryCard";
+import { CategoryInterface } from "@/interfaces/CategoryInterface";
+import { CompanyInterface } from "@/interfaces/CompanyInterface";
 
-export interface CompanyInterface {
-  id: number;
-  name: string;
-  logoPath: string;
-  address: string;
-  phoneNumber: string;
-}
 
 interface Props {
   categories: CategoryInterface[];

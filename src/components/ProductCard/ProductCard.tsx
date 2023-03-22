@@ -2,18 +2,11 @@ import React, { FC, useState } from "react";
 import styles from "./ProductCard.module.scss";
 import Image from "next/image";
 import { F_Roboto } from "@/fonts";
+import { ProductsInterface } from "@/interfaces/ProductsInterface";
 
-export interface Categories {
-  id: number;
-  categorie_id: number;
-  nameProduct: string;
-  description: string;
-  productPicturePath: string;
-  price: string;
-}
 
 interface Props {
-  category: Categories;
+  category: ProductsInterface;
 }
 const ItemCard: FC<Props> = ({ category }) => {
   const [isImageOpen, setIsImageOpen] = useState<boolean>(false);

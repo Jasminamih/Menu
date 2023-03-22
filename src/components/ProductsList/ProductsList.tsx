@@ -1,16 +1,18 @@
+import { CategoryInterface } from "@/interfaces/CategoryInterface";
+import { CompanyInterface } from "@/interfaces/CompanyInterface";
+import { ProductsInterface } from "@/interfaces/ProductsInterface";
 import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
-import Banner, { CompanyInterface } from "../CompanyDetails/CompanyDetails";
-import { CategoryInterface } from "../CategoryCard/CategoryCard";
-import ItemCard, { Categories } from "../ProductCard/ProductCard";
+import Banner from "../CompanyDetails/CompanyDetails";
+import ItemCard from "../ProductCard/ProductCard";
 import styles from "./ProductsList.module.scss";
 
 interface Props {
-  categories: Categories[];
-  menu: CategoryInterface[];
+  products: ProductsInterface[];
+  category: CategoryInterface[];
   company: CompanyInterface;
 }
-const ItemsList: FC<Props> = ({ categories, menu, company }) => {
+const ItemsList: FC<Props> = ({ category, products, company }) => {
   const [selectedCategory, setSelectedCategory] = useState();
 const{ push}= useRouter()
   const handleButtonClick = (category: any) => {
@@ -23,12 +25,12 @@ const{ push}= useRouter()
   return (
     <div className={styles.wrapper}>
       <Banner
-        categories={menu}
+        categories={category}
         handleButtonClick={handleButtonClick}
         company={company}
       />
-      {categories.map((item) => {
-        return <ItemCard category={item} />;
+      {products.map((item) => {
+        return <ItemCard category={item}  />;
       })}
     </div>
   );

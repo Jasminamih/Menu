@@ -5,47 +5,33 @@ import { useRouter } from "next/router";
 import { F_Roboto } from "@/fonts";
 import "animate.css";
 import Link from "next/link";
-
-export interface CategoryInterface {
-  id: number;
-  categorieMenu: string;
-  categorie: {
-    id: number;
-    menu_id: number;
-    nameCategory: string;
-    categoryPicturePath: string;
-  }[];
-}
+import { CategoryInterface } from "@/interfaces/CategoryInterface";
 
 interface Props {
   index: number;
-  categories: CategoryInterface;
+  category: CategoryInterface;
 }
 
-const CategoryCard: FC<Props> = ({ index, categories }) => {
+const CategoryCard: FC<Props> = ({ index, category }) => {
   const [show, setShow] = useState(false);
-
-
   const IMAGES_URL = process.env.NEXT_PUBLIC_IMAGES_URL;
 
-  const categori = categories.categorie.map((data) => {
+  const categories = category.categorie.map((data) => {
     return data;
   });
 
-  console.log(categori);
 
   useEffect(() => {
     setTimeout(() => {
       setShow(true);
-    }, (index) * 300);
+    }, index * 300);
   }, []);
 
-  console.log(index)
   return (
     <>
-      {categori.map((item) => {
+      {categories.map((item) => {
         return (
-          <Link 
+          <Link
             href={`/products/${item.id}`}
             className={`${styles.card}  ${show ? styles.showCard : ""}`}
           >

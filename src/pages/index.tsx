@@ -1,17 +1,18 @@
 import Head from "next/head";
-import { CategoryInterface } from "@/components/CategoryCard/CategoryCard";
 import CategoriesList from "@/components/CategoriesList/CategoriesList";
 import { GetStaticProps } from "next";
 import { FC } from "react";
 import Logo from "@/components/LogoBanner/LogoBanner";
-import { CompanyInterface } from "@/components/CompanyDetails/CompanyDetails";
+import { CategoryInterface } from "@/interfaces/CategoryInterface";
+import { CompanyInterface } from "@/interfaces/CompanyInterface";
+import { ProductsInterface } from "@/interfaces/ProductsInterface";
 
 interface Props {
-  menu: CategoryInterface[];
+  category: CategoryInterface[];
   company: CompanyInterface;
 }
 
-const Home: FC<Props> = ({ menu, company }) => {
+const Home: FC<Props> = ({ category, company }) => {
   return (
     <>
       <Head>
@@ -22,7 +23,7 @@ const Home: FC<Props> = ({ menu, company }) => {
       </Head>
       <main>
         <Logo company={company} />
-        <CategoriesList menu={menu} company={company} />
+        <CategoriesList category={category} company={company} />
       </main>
     </>
   );
@@ -31,16 +32,14 @@ export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   const resCompany = await fetch(`https://nomad-cloud.in/api/companie`);
-  const resMenu = await fetch(`https://nomad-cloud.in/api/menu`);
-
+  const resCategory = await fetch(`https://nomad-cloud.in/api/menu`);
   const company = await resCompany.json();
-  const menu = await resMenu.json();
+  const category = await resCategory.json();
 
   return {
     props: {
       company,
-      menu,
+      category,
     },
-    // revalidate: 60 * 60 * 24,
   };
 };
