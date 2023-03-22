@@ -31,10 +31,10 @@ const ItemCard: FC<Props> = ({ category }) => {
       />
 
       {isImageOpen && (
-        <div className={styles.video} onClick={() => setIsImageOpen(false)}>
-          <div className={styles.videoInner}>
+        <div className={styles.overlay} onClick={() => setIsImageOpen(false)}>
+          <div className={styles.overlayInner}>
             <Image
-              className={styles.iframe}
+              className={styles.imageOverlay}
               width={660}
               height={410}
               src={`${IMAGES_URL}/${category.productPicturePath}`}
