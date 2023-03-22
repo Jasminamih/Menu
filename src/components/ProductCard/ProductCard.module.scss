@@ -1,0 +1,85 @@
+@import "../../styles/colors.module.scss";
+@import "../../styles/breakpoints.module.scss";
+
+.card {
+  max-width: 660px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.cardText {
+  position: relative;
+
+  p {
+    color: $light-gray;
+    font-size: 0.9rem;
+    margin: 0.7rem 0;
+  }
+}
+
+.image {
+  border-radius: 1.2rem;
+  max-width: 660px;
+  width: 100%;
+  object-fit: cover;
+
+  @media screen and (max-width: $phone-L) {
+    height: 200px;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.price {
+  color: $orange;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.weight {
+  font-size: 0.8rem;
+  position: absolute;
+  right: 5px;
+  color: $light-gray;
+
+  top: 5px;
+}
+
+.video {
+  background-color: rgba(0, 0, 0, 0.956);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.videoInner {
+  width: 800px;
+  height: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.2rem;
+
+  .iframe {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: black;
+  }
+}

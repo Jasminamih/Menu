@@ -1,0 +1,28 @@
+@import "../../styles/colors.module.scss";
+
+.bannerText {
+  line-height: 2;
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  p {
+    color: $light-gray;
+  }
+
+  .btn {
+    background-color: $white;
+    border: 3px solid $orange;
+    margin: 1rem 0.7rem 0 0;
+    border-radius: 1.2rem;
+    padding: 5px 10px;
+    color: $orange;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+      color: $white;
+      background-color: $orange;
+    }
+  }
+}

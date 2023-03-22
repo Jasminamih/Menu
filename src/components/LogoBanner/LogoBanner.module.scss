@@ -1,0 +1,26 @@
+@import "../../styles/colors.module.scss";
+@import "../../styles/breakpoints.module.scss";
+
+.logoWrapper {
+  position: relative;
+  max-width: 700px;
+  height: 200px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @media screen and (max-width: $phone-L) {
+    height: 160px;
+  }
+}
+
+.language {
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1rem;
+  border: none;
+}

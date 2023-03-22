@@ -1,0 +1,72 @@
+@import "../../styles/colors.module.scss";
+@import "../../styles/breakpoints.module.scss";
+
+.card {
+  position: relative;
+  margin-bottom: 1.5rem;
+  height: 220px;
+  max-width: 660px;
+  cursor: pointer;
+  opacity: 0;
+
+  @media screen and (max-width: $phone-L) {
+    height: 160px;
+  }
+}
+
+.showCard {
+  animation: slidein ease-in-out 1s;
+  opacity: 1;
+  transition-duration: 2s;
+
+  @keyframes slidein {
+    from {
+      margin-right: 100%;
+    }
+
+    to {
+      margin-right: 0%;
+    }
+  }
+}
+
+.image {
+  border-radius: 1.2rem;
+  max-width: 660px;
+  width: 100%;
+  object-fit: cover;
+
+  @media screen and (max-width: $phone-L) {
+    height: 160px;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.393);
+  margin-bottom: 0;
+  border-radius: 1.2rem;
+  height: 220px;
+  width: 100%;
+
+  @media screen and (max-width: $phone-L) {
+    height: 160px;
+  }
+}
+
+.title {
+  top: 50%;
+  left: 50%;
+  letter-spacing: 2px;
+  transform: translate(-50%, -50%);
+  color: $white;
+  font-weight: 500;
+  position: absolute;
+  z-index: 999;
+}
