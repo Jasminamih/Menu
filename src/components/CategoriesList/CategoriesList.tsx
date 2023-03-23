@@ -11,13 +11,14 @@ interface Props {
 }
 
 const CategoriesList: FC<Props> = ({ category, company }) => {
-  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedCategory, setSelectedCategory] = useState(1);
   const filteredItems = category.filter(
     (category) => category.id === selectedCategory
   );
 
   const handleButtonClick = (category: any) => {
     setSelectedCategory(category);
+    
   };
 
   return (
@@ -28,8 +29,8 @@ const CategoriesList: FC<Props> = ({ category, company }) => {
         company={company}
       />
 
-      {filteredItems.map((item, i) => {
-        return <CategoryCard index={i} category={item} />;
+      {filteredItems.map((item, index) => {
+        return <CategoryCard index={index} category={item} />;
       })}
     </div>
   );

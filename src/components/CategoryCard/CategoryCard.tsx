@@ -6,6 +6,7 @@ import { F_Roboto } from "@/fonts";
 import "animate.css";
 import Link from "next/link";
 import { CategoryInterface } from "@/interfaces/CategoryInterface";
+import { stringify } from "querystring";
 
 interface Props {
   index: number;
@@ -21,17 +22,21 @@ const CategoryCard: FC<Props> = ({ index, category }) => {
   });
 
 
+ 
+
+   
+
   useEffect(() => {
     setTimeout(() => {
       setShow(true);
-    }, index * 300);
+    }, index+1 * 300);
   }, []);
 
   return (
     <>
       {categories.map((item) => {
         return (
-          <Link
+          <Link  key={item.id}
             href={`/products/${item.id}`}
             className={`${styles.card}  ${show ? styles.showCard : ""}`}
           >

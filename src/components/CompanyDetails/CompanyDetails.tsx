@@ -14,6 +14,8 @@ interface Props {
   company: CompanyInterface;
 }
 const Banner: FC<Props> = ({ categories, handleButtonClick, company }) => {
+  
+  
   return (
     <div className={`${styles.bannerText} ${F_Roboto.className}`}>
       <h1 className={styles.title}> {company.name} Menu</h1>
@@ -32,7 +34,7 @@ const Banner: FC<Props> = ({ categories, handleButtonClick, company }) => {
         {categories.map((item) => {
           return (
             <button
-              className={styles.btn}
+              className={styles.btn} 
               onClick={() => handleButtonClick(item.id)}
             >
               {item.categorieMenu}
