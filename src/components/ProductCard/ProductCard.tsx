@@ -4,7 +4,6 @@ import Image from "next/image";
 import { F_Roboto } from "@/fonts";
 import { ProductsInterface } from "@/interfaces/ProductsInterface";
 
-
 interface Props {
   category: ProductsInterface;
 }
@@ -13,36 +12,39 @@ const ItemCard: FC<Props> = ({ category }) => {
   const IMAGES_URL = process.env.NEXT_PUBLIC_IMAGES_URL;
 
   return (
-    <div className={styles.card}>
-      <Image
-        onClick={() => setIsImageOpen(true)}
-        className={styles.image}
-        width={660}
-        height={410}
-        src={`${IMAGES_URL}/${category.productPicturePath}`}
-        alt={"item"}
-      />
+    <>
+      <div className={styles.card}>
+        <div className={styles.imgWrapper}>
+          <Image
+            onClick={() => setIsImageOpen(true)}
+            className={styles.image}
+            fill
+            src={`${IMAGES_URL}/${category.productPicturePath}`}
+            alt={"item"}
+          />
+        </div>
+        <div className={`${styles.cardText} ${F_Roboto.className}`}>
+          <h2 className={styles.title}>{category.nameProduct}</h2>
+          <p className={styles.description}>{category.description}</p>
+          <span className={styles.weight}>150g</span>
+          <span className={styles.price}>{category.price}$</span>
+        </div>
+      </div>
+
 
       {isImageOpen && (
         <div className={styles.overlay} onClick={() => setIsImageOpen(false)}>
-          <div className={styles.overlayInner}>
+          <div className={styles.openImgWrapper}>
             <Image
               className={styles.imageOverlay}
-              width={660}
-              height={410}
+              fill
               src={`${IMAGES_URL}/${category.productPicturePath}`}
               alt={"item"}
             />
           </div>
         </div>
       )}
-      <div className={`${styles.cardText} ${F_Roboto.className}`}>
-        <h2 className={styles.title}>{category.nameProduct}</h2>
-        <p>{category.description}</p>
-        <span className={styles.weight}>150g</span>
-        <span className={styles.price}>{category.price}$</span>
-      </div>
-    </div>
+    </>
   );
 };
 

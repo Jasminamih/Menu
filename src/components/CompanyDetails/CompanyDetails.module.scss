@@ -4,17 +4,14 @@
   line-height: 2;
   width: 100%;
   margin-bottom: 1.5rem;
-
-
   .title{
     font-weight: 500;
   }
-  p {
+  .contactDetail {
     color: $light-gray;
     font-size: 14px;
     .icon{
-      margin-right: 3
-      px;
+      margin-right: 7px;
     }
   }
 
@@ -33,16 +30,17 @@
       color: $white;
       background-color: $orange;
     }
+    &.active {
+      border: 3px solid $orange;
+      color: $white;
+      background-color: $orange;
+      margin: 1rem 0.7rem 0 0;
+      border-radius: 1.2rem;
+      padding: 5px 10px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+    }
   }
 }
-.active {
-  border: 3px solid $orange;
-  color: $white;
-  background-color: $orange;
-  margin: 1rem 0.7rem 0 0;
-  border-radius: 1.2rem;
-  padding: 5px 10px;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 1rem;
-}
+
