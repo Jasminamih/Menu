@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from "./LogoBanner.module.scss";
 import Image from "next/image";
 import { F_Roboto } from "@/fonts";
-import { CompanyInterface } from "../CompanyDetails/CompanyDetails";
+import { CompanyInterface } from "@/interfaces/CompanyInterface";
 
 interface Props {
   company: CompanyInterface;

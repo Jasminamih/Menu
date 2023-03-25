@@ -5,8 +5,17 @@
   width: 100%;
   margin-bottom: 1.5rem;
 
+
+  .title{
+    font-weight: 500;
+  }
   p {
     color: $light-gray;
+    font-size: 14px;
+    .icon{
+      margin-right: 3
+      px;
+    }
   }
 
   .btn {

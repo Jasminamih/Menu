@@ -5,7 +5,6 @@ import { FC } from "react";
 import Logo from "@/components/LogoBanner/LogoBanner";
 import { CategoryInterface } from "@/interfaces/CategoryInterface";
 import { CompanyInterface } from "@/interfaces/CompanyInterface";
-import { ProductsInterface } from "@/interfaces/ProductsInterface";
 
 interface Props {
   category: CategoryInterface[];

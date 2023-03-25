@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC,useState } from "react";
 import Banner from "../CompanyDetails/CompanyDetails";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import styles from "./CategoriesList.module.scss";

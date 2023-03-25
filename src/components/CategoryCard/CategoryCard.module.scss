@@ -15,9 +15,9 @@
 }
 
 .showCard {
-  animation: slidein ease-in-out 1s;
+  animation: slidein ease-in-out 0.5s;
   opacity: 1;
-  transition-duration: 2s;
+  transition-duration: 1s;
 
   @keyframes slidein {
     from {
