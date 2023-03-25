@@ -1,17 +1,22 @@
-import Head from "next/head";
-import CategoriesList from "@/components/CategoriesList/CategoriesList";
-import { GetStaticProps } from "next";
-import { FC } from "react";
-import Logo from "@/components/LogoBanner/LogoBanner";
+import { MainContext } from "@/context/MainContext";
 import { CategoryInterface } from "@/interfaces/CategoryInterface";
 import { CompanyInterface } from "@/interfaces/CompanyInterface";
+import HomeTemplate from "@/templates/HomeTemplate/HomeTemplate";
+import axios from "axios";
+import { GetStaticProps } from "next";
+import Head from "next/head";
+import { FC, useContext } from "react";
 
 interface Props {
-  category: CategoryInterface[];
+  categories: CategoryInterface[];
   company: CompanyInterface;
 }
 
-const Home: FC<Props> = ({ category, company }) => {
+const Home: FC<Props> = ({ categories, company }) => {
+  const { setCompany, setCategories } = useContext(MainContext);
+  setCompany(company);
+  setCategories(categories);
+
   return (
     <>
       <Head>
@@ -21,8 +26,7 @@ const Home: FC<Props> = ({ category, company }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Logo company={company} />
-        <CategoriesList category={category} company={company} />
+        <HomeTemplate />
       </main>
     </>
   );
@@ -30,15 +34,13 @@ const Home: FC<Props> = ({ category, company }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const resCompany = await fetch(`https://nomad-cloud.in/api/companie`);
-  const resCategory = await fetch(`https://nomad-cloud.in/api/menu`);
-  const company = await resCompany.json();
-  const category = await resCategory.json();
+  const company = await axios.get(`https://nomad-cloud.in/api/companie`);
+  const categories = await axios.get(`https://nomad-cloud.in/api/menu`);
 
   return {
     props: {
-      company,
-      category,
+      company: company.data,
+      categories: categories.data,
     },
   };
 };

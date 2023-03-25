@@ -1,19 +1,25 @@
-import BackBtn from "@/components/BackBtn/BackBtn";
-import Logo from "@/components/LogoBanner/LogoBanner";
-import { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
-import React, { FC } from "react";
-import { ProductsInterface } from "@/interfaces/ProductsInterface";
+import { MainContext } from "@/context/MainContext";
 import { CategoryInterface } from "@/interfaces/CategoryInterface";
 import { CompanyInterface } from "@/interfaces/CompanyInterface";
-import ProductsList from "@/components/ProductsList/ProductsList";
+import { ProductsInterface } from "@/interfaces/ProductsInterface";
+import ProductTemplate from "@/templates/ProductTemplate/ProductTemplate";
+import axios from "axios";
+import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
+import React, { FC, useContext } from "react";
 
 interface Props {
   products: ProductsInterface[];
-  category: CategoryInterface[];
+  categories: CategoryInterface[];
   company: CompanyInterface;
 }
-const CategoryPage: FC<Props> = ({ products, category, company }) => {
+
+const CategoryPage: FC<Props> = ({ products, categories, company }) => {
+  const { setProducts, setCategories, setCompany } = useContext(MainContext);
+  setProducts(products);
+  setCategories(categories);
+  setCompany(company);
+
   return (
     <>
       <Head>
@@ -23,40 +29,34 @@ const CategoryPage: FC<Props> = ({ products, category, company }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Logo company={company} />
-        <BackBtn />
-        <ProductsList products={products} category={category} company={company} />
+        <ProductTemplate />
       </main>
     </>
   );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(`https://nomad-cloud.in/api/categorieForProducts`);
-  const [products]: CategoryInterface[] = await res.json();
-
-  const paths = [products].map((p: { id: { toString: () => any } }) => ({
+  const API_URL = process.env.API_URL;
+  const products = await axios.get(`${API_URL}/categorieForProducts`);
+  const paths = products.data?.map((p: ProductsInterface) => ({
     params: {
       id: p.id.toString(),
     },
   }));
-
   return {
     paths,
     fallback: true,
   };
 };
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (params && params.id) {
-    const res = await fetch(
-      `https://nomad-cloud.in/api/categorieForProducts/${params.id}`
-    );
-    const products = await res.json();
-    const resCategory = await fetch(`https://nomad-cloud.in/api/menu`);
-    const resCompany = await fetch(`https://nomad-cloud.in/api/companie`);
-    const company = await resCompany.json();
 
-    const category = await resCategory.json();
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const API_URL = process.env.API_URL;
+
+  if (params && params.id) {
+    const products = await axios.get(`${API_URL}/categorieForProducts/${params.id}`);
+    const company = await axios.get(`${API_URL}/companie`);
+    const categories = await axios.get(`${API_URL}/menu`);
+
     if (Object.keys(products).length === 0) {
       return {
         notFound: true,
@@ -65,9 +65,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     return {
       props: {
-        products,
-        company,
-       category,
+        products: products.data,
+        company: company.data,
+        categories: categories.data,
       },
     };
   }

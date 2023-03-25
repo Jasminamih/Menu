@@ -3,15 +3,16 @@
 
 .logoWrapper {
   position: relative;
-  max-width: 700px;
   height: 200px;
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
   @media screen and (max-width: $phone-L) {
     height: 160px;
+  }
+  img{
+    object-fit: cover;
   }
 }
 

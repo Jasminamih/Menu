@@ -1,34 +1,35 @@
-import React, { FC} from "react";
-import styles from "./CompanyDetails.module.scss";
+import { MainContext } from "@/context/MainContext";
 import { F_Roboto } from "@/fonts";
-import { TfiLocationPin } from "react-icons/Tfi";
-import { TbPhone } from "react-icons/Tb";
+import React, { FC, useContext } from "react";
 import { FaWifi } from "react-icons/Fa";
-import { CategoryInterface } from "@/interfaces/CategoryInterface";
-import { CompanyInterface } from "@/interfaces/CompanyInterface";
+import { TbPhone } from "react-icons/Tb";
+import { TfiLocationPin } from "react-icons/Tfi";
+
+import styles from "./CompanyDetails.module.scss";
 
 interface Props {
-  categories: CategoryInterface[];
   handleButtonClick: (item: any) => void;
-  company: CompanyInterface;
 }
-const CompanyDetails: FC<Props> = ({ categories, handleButtonClick, company }) => {
+
+const CompanyDetails: FC<Props> = ({  handleButtonClick }) => {
+  const { categories, company } = useContext(MainContext);
+
   return (
     <div className={`${styles.bannerText} ${F_Roboto.className}`}>
-      <h1 className={styles.title}> {company.name} Menu</h1>
+      <h1 className={styles.title}> {company?.name} Menu</h1>
       <p className={styles.address}>
         {" "}
-        <TfiLocationPin className={styles.icon} /> {company.address}
+        <TfiLocationPin className={styles.icon} /> {company?.address}
       </p>
       <p className={styles.phone}>
         {" "}
-        <TbPhone className={styles.icon} /> {company.phoneNumber}
+        <TbPhone className={styles.icon} /> {company?.phoneNumber}
       </p>
       <p className={styles.wifi}>
         <FaWifi className={styles.icon} /> WiFi_Password123
       </p>
       <div>
-        {categories.map((item) => {
+        {categories?.map((item) => {
           return (
             <button
               className={styles.btn}

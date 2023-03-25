@@ -1,18 +1,17 @@
-import React, { FC } from "react";
-import styles from "./LogoBanner.module.scss";
-import Image from "next/image";
+import { MainContext } from "@/context/MainContext";
 import { F_Roboto } from "@/fonts";
-import { CompanyInterface } from "@/interfaces/CompanyInterface";
+import Image from "next/image";
+import React, { FC, useContext } from "react";
 
-interface Props {
-  company: CompanyInterface;
-}
-const Logo: FC<Props> = ({ company }) => {
+import styles from "./LogoBanner.module.scss";
+
+const Logo: FC = () => {
+  const { company } = useContext(MainContext);
   const IMAGES_URL = process.env.NEXT_PUBLIC_IMAGES_URL;
 
   return (
     <div className={`${styles.logoWrapper} ${F_Roboto.className}`}>
-      <Image fill src={`${IMAGES_URL}/${company.logoPath}`} alt={""} />
+      <Image fill src={`${IMAGES_URL}/${company?.logoPath}`} alt={"Company logo"} />
       <select className={styles.language} name="" id="">
         <option value="">English</option>
         <option value="">Macedonian</option>
