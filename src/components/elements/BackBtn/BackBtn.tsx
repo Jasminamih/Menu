@@ -1,7 +1,8 @@
-import React, { FC } from "react";
-import styles from "./BackBtn.module.scss";
-import { MdArrowBack } from "react-icons/Md";
 import { useRouter } from "next/router";
+import React, { FC } from "react";
+import { MdArrowBack } from "react-icons/Md";
+
+import styles from "./BackBtn.module.scss";
 
 const BackBtn: FC = () => {
   const { push } = useRouter();
