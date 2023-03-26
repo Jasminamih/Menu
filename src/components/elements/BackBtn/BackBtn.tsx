@@ -13,11 +13,9 @@ const BackBtn: FC = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleClick} className={styles.btn}>
-        <MdArrowBack />
-      </button>
-    </div>
+    <button onClick={handleClick} className={styles.btn}>
+      <MdArrowBack className={styles.backIcon} />
+    </button>
   );
 };
 

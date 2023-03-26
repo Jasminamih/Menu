@@ -2,7 +2,7 @@ import { MainContext } from "@/context/MainContext";
 import { CategoryInterface } from "@/interfaces/CategoryInterface";
 import { CompanyInterface } from "@/interfaces/CompanyInterface";
 import { ProductsInterface } from "@/interfaces/ProductsInterface";
-import ProductTemplate from "@/templates/ProductTemplate/ProductTemplate";
+import ProductTemplate from "@/components/templates/ProductTemplate/ProductTemplate";
 import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
@@ -53,7 +53,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const API_URL = process.env.API_URL;
 
   if (params && params.id) {
-    const products = await axios.get(`${API_URL}/categorieForProducts/${params.id}`);
+    const products = await axios.get(
+      `${API_URL}/categorieForProducts/${params.id}`
+    );
     const company = await axios.get(`${API_URL}/companie`);
     const categories = await axios.get(`${API_URL}/menu`);
 

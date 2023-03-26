@@ -1,4 +1,4 @@
-@import "../../styles/colors.module.scss";
+@import "../../../styles/colors.module.scss";
 
 .btn {
   border-radius: 50%;
@@ -11,11 +11,15 @@
   align-items: center;
   font-size: 1.5rem;
   background-color: $white;
-  top: 1.2rem;
-  left: 1.2rem;
+  top: 0.7rem;
+  left: inherit;
+  margin-left: 0.7rem;
   cursor: pointer;
-  z-index: 999;
+  z-index: 10;
   &:hover {
     background-color: rgba(244, 238, 238, 0.47);
+  }
+  .backIcon{
+    font-size: 1.4rem;
   }
 }

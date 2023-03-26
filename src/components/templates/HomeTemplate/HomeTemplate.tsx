@@ -1,5 +1,5 @@
-import CategoriesList from "@/components/CategoriesList/CategoriesList";
-import Logo from "@/components/LogoBanner/LogoBanner";
+import CategoriesList from "@/components/modules/CategoriesList/CategoriesList";
+import Logo from "@/components/modules/LogoBanner/LogoBanner";
 import React, { FC } from "react";
 
 import styles from "./HomeTemplate.module.scss";

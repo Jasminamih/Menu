@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import React, { FC, useContext, useState } from "react";
 
 import Banner from "../CompanyDetails/CompanyDetails";
-import ItemCard from "../ProductCard/ProductCard";
-import styles from "./ProductsList.module.scss";
+import ItemCard from "../../elements/ProductCard/ProductCard";
+import ListWrapperLayout from "@/components/layouts/ListWrapperLayout/ListWrapperLayout";
 
-const ItemsList: FC = () => {
-  const {products} = useContext(MainContext)
+const ProductsList: FC = () => {
+  const { products } = useContext(MainContext);
   const [selectedCategory, setSelectedCategory] = useState();
   const { push } = useRouter();
 
@@ -19,13 +19,14 @@ const ItemsList: FC = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <ListWrapperLayout>
       <Banner handleButtonClick={handleButtonClick} />
+
       {products?.map((item) => {
         return <ItemCard category={item} />;
       })}
-    </div>
+    </ListWrapperLayout>
   );
 };
 
-export default ItemsList;
+export default ProductsList;

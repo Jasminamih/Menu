@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 
 import styles from "./ProductTemplate.module.scss";
-import BackBtn from "@/components/BackBtn/BackBtn";
-import Logo from "@/components/LogoBanner/LogoBanner";
-import ProductsList from "@/components/ProductsList/ProductsList";
+import BackBtn from "@/components/elements/BackBtn/BackBtn";
+import Logo from "@/components/modules/LogoBanner/LogoBanner";
+import ProductsList from "@/components/modules/ProductsList/ProductsList";
 
 const ProductTemplate: FC = () => {
   return (

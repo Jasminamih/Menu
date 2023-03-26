@@ -1,7 +1,7 @@
 import { MainContext } from "@/context/MainContext";
 import { CategoryInterface } from "@/interfaces/CategoryInterface";
 import { CompanyInterface } from "@/interfaces/CompanyInterface";
-import HomeTemplate from "@/templates/HomeTemplate/HomeTemplate";
+import HomeTemplate from "@/components/templates/HomeTemplate/HomeTemplate";
 import axios from "axios";
 import { GetStaticProps } from "next";
 import Head from "next/head";

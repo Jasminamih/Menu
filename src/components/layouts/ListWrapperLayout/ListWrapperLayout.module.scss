@@ -1,0 +1,16 @@
+@import "../../../styles/colors.module.scss";
+@import "../../../styles/breakpoints.module.scss";
+
+.listWrapper {
+    width: 100%;
+    background-color: $white;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+    margin-top: -1.2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    min-height: calc(100vh - 200px);
+  }

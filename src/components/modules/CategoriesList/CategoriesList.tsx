@@ -1,9 +1,9 @@
 import { MainContext } from "@/context/MainContext";
 import React, { FC, useContext, useState } from "react";
 
-import CategoryCard from "../CategoryCard/CategoryCard";
+import CategoryCard from "../../elements/CategoryCard/CategoryCard";
 import Banner from "../CompanyDetails/CompanyDetails";
-import styles from "./CategoriesList.module.scss";
+import ListWrapperLayout from "@/components/layouts/ListWrapperLayout/ListWrapperLayout";
 
 const CategoriesList: FC = () => {
   const { categories } = useContext(MainContext);
@@ -18,13 +18,13 @@ const CategoriesList: FC = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <ListWrapperLayout>
       <Banner handleButtonClick={handleButtonClick} />
 
       {filteredItems?.map((item, index) => {
         return <CategoryCard index={index} category={item} />;
       })}
-    </div>
+    </ListWrapperLayout>
   );
 };
 

@@ -15,15 +15,15 @@ const CompanyDetails: FC<Props> = ({ handleButtonClick }) => {
   return (
     <div className={`${styles.bannerText} ${F_Roboto.className}`}>
       <h1 className={styles.title}> {company?.name} Menu</h1>
-      <p className={`${styles.address} ${styles.contactDetail}`}>
+      <p className={`${styles.contactDetail}`}>
         <TfiLocationPin className={styles.icon} />
         <span>{company?.address}</span>
       </p>
-      <p className={`${styles.phone} ${styles.contactDetail}`}>
+      <p className={`${styles.contactDetail}`}>
         <TbPhone className={styles.icon} />
         <span>{company?.phoneNumber}</span>
       </p>
-      <p className={`${styles.wifi} ${styles.contactDetail}`}>
+      <p className={`${styles.contactDetail}`}>
         <FaWifi className={styles.icon} />
         <span>WiFi_Password123</span>
       </p>

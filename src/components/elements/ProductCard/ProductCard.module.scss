@@ -1,5 +1,5 @@
-@import "../../styles/colors.module.scss";
-@import "../../styles/breakpoints.module.scss";
+@import "../../../styles/colors.module.scss";
+@import "../../../styles/breakpoints.module.scss";
 
 .card {
   max-width: 660px;
@@ -14,12 +14,14 @@
       object-fit: cover;
     }
   }
+
   .cardText {
     position: relative;
       .title {
         font-weight: 500;
         font-size: 1.2rem;
         margin-top: 0.7rem;
+        margin-right: 3rem;
       }
       .description {
         color: $light-gray;
@@ -46,26 +48,29 @@
 .overlay {
   background-color: rgba(0, 0, 0, 0.956);
   position: fixed;
+  z-index: 9999;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 9999;
 
   .openImgWrapper {
-    width: 800px;
-    height: 450px;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    padding: 1.2rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 1.2rem;
 
     .imageOverlay {
+      position: static !important;
       width: 100%;
-      height: 100%;
+      height: auto;
       background-color: $black;
       object-fit: cover;
+
     }
   }
 }
