@@ -4,7 +4,9 @@ import React, { FC, useContext } from "react";
 import { FaWifi } from "react-icons/Fa";
 import { TbPhone } from "react-icons/Tb";
 import { TfiLocationPin } from "react-icons/Tfi";
+
 import styles from "./CompanyDetails.module.scss";
+
 interface Props {
   handleButtonClick: (item: any) => void;
 }
@@ -33,6 +35,7 @@ const CompanyDetails: FC<Props> = ({ handleButtonClick }) => {
             <button
               className={styles.btn}
               onClick={() => handleButtonClick(item.id)}
+              key={item.id + "category button"}
             >
               {item.categorieMenu}
             </button>
