@@ -34,8 +34,9 @@ const Home: FC<Props> = ({ categories, company }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const company = await axios.get(`https://nomad-cloud.in/api/companie`);
-  const categories = await axios.get(`https://nomad-cloud.in/api/menu`);
+  const API_URL = process.env.API_URL;
+  const company = await axios.get(`${API_URL}/companie`);
+  const categories = await axios.get(`${API_URL}/menu`);
 
   return {
     props: {

@@ -53,9 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const API_URL = process.env.API_URL;
 
   if (params && params.id) {
-    const products = await axios.get(
-      `${API_URL}/categorieForProducts/${params.id}`
-    );
+    const products = await axios.get(`${API_URL}/categorieForProducts/${params.id}`);
     const company = await axios.get(`${API_URL}/companie`);
     const categories = await axios.get(`${API_URL}/menu`);
 
