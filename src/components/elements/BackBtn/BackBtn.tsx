@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { FC } from "react";
-import { MdArrowBack } from "react-icons/Md";
+import { MdArrowBack } from "react-icons/md";
 
 import styles from "./BackBtn.module.scss";
 
