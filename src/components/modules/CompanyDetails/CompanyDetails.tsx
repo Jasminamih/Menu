@@ -1,9 +1,9 @@
 import { MainContext } from "@/context/MainContext";
 import { F_Roboto } from "@/fonts";
 import React, { FC, useContext } from "react";
-import { FaWifi } from "react-icons/Fa";
-import { TbPhone } from "react-icons/Tb";
-import { TfiLocationPin } from "react-icons/Tfi";
+import { FaWifi } from "react-icons/fa";
+import { TbPhone } from "react-icons/tb";
+import { TfiLocationPin } from "react-icons/tfi";
 
 import styles from "./CompanyDetails.module.scss";
 
