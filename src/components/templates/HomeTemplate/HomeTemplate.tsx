@@ -1,4 +1,6 @@
+import ListWrapperLayout from "@/components/layouts/ListWrapperLayout/ListWrapperLayout";
 import CategoriesList from "@/components/modules/CategoriesList/CategoriesList";
+import CompanyDetails from "@/components/modules/CompanyDetails/CompanyDetails";
 import Logo from "@/components/modules/LogoBanner/LogoBanner";
 import React, { FC } from "react";
 
@@ -8,7 +10,10 @@ const HomeTemplate: FC = () => {
   return (
     <div className={styles.homeWrapper}>
       <Logo />
-      <CategoriesList />
+      <ListWrapperLayout>
+        <CompanyDetails />
+        <CategoriesList />
+      </ListWrapperLayout>
     </div>
   );
 };
