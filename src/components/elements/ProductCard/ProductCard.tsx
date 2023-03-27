@@ -26,7 +26,7 @@ const ItemCard: FC<Props> = ({ category }) => {
         <div className={`${styles.cardText} ${F_Roboto.className}`}>
           <h2 className={styles.title}>{category.nameProduct}</h2>
           <p className={styles.description}>{category.description}</p>
-          <span className={styles.weight}>150g</span>
+          <span className={styles.weight}>{category.weightProduct}</span>
           <span className={styles.price}>{category.price}$</span>
         </div>
       </div>

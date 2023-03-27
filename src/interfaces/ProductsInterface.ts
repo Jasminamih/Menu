@@ -5,5 +5,7 @@ export interface ProductsInterface {
     description: string;
     productPicturePath: string;
     price: string;
+    weightProduct: string
+
   }
   
