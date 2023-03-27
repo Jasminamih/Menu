@@ -1,18 +1,17 @@
 import { MainContext } from "@/context/MainContext";
 import { F_Roboto } from "@/fonts";
-import React, { FC, useContext } from "react";
+import { useRouter } from "next/router";
+import React, { FC, useContext, useEffect } from "react";
 import { FaWifi } from "react-icons/fa";
 import { TbPhone } from "react-icons/tb";
 import { TfiLocationPin } from "react-icons/tfi";
 
 import styles from "./CompanyDetails.module.scss";
 
-interface Props {
-  handleButtonClick: (item: any) => void;
-}
-
-const CompanyDetails: FC<Props> = ({ handleButtonClick }) => {
-  const { categories, company } = useContext(MainContext);
+const CompanyDetails: FC = () => {
+  const { categories, company, selectedCategoryId, setSelectedCategoryId } =
+    useContext(MainContext);
+  const { push } = useRouter();
 
   return (
     <div className={`${styles.bannerText} ${F_Roboto.className}`}>
@@ -27,14 +26,19 @@ const CompanyDetails: FC<Props> = ({ handleButtonClick }) => {
       </p>
       <p className={`${styles.contactDetail}`}>
         <FaWifi className={styles.icon} />
-        <span>WiFi_Password123</span>
+        <span>{company?.wifiPass}</span>
       </p>
       <div>
         {categories?.map((item) => {
           return (
             <button
-              className={styles.btn}
-              onClick={() => handleButtonClick(item.id)}
+              className={`${styles.btn} ${
+                item.id === selectedCategoryId ? styles.active : ""
+              }`}
+              onClick={() => {
+                setSelectedCategoryId(item.id);
+                push("/");
+              }}
               key={item.id + "category button"}
             >
               {item.categorieMenu}

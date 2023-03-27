@@ -4,5 +4,5 @@ export interface CompanyInterface {
     logoPath: string;
     address: string;
     phoneNumber: string;
+    wifiPass: string;
   }
-  

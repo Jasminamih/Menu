@@ -7,32 +7,38 @@ interface MainContextProps {
   company: CompanyInterface | null;
   categories: CategoryInterface[] | null;
   products: ProductsInterface[] | null;
+  selectedCategoryId: number | null;
   setCompany: (company: CompanyInterface | null) => void;
   setCategories: (categories: CategoryInterface[] | null) => void;
   setProducts: (products: ProductsInterface[] | null) => void;
+  setSelectedCategoryId: (categoryId: number | null) => void;
 }
 
 export const MainContext = createContext<MainContextProps>({
   company: null,
   categories: null,
   products: null,
+  selectedCategoryId: null,
   setCompany: () => {},
   setCategories: () => {},
   setProducts: () => {},
+  setSelectedCategoryId: () => {}
 });
 
 export const MainContextProvider = ({ children }: any) => {
   const [company, setCompany] = useState<CompanyInterface | null>(null);
   const [categories, setCategories] = useState<CategoryInterface[] | null>(null);
-  const [products, setProducts] = useState<ProductsInterface[] | null>(null)
-
+  const [products, setProducts] = useState<ProductsInterface[] | null>(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
   const initialContextValue = {
     company,
     categories,
     products,
+    selectedCategoryId,
     setCompany,
     setCategories,
-    setProducts
+    setProducts,
+    setSelectedCategoryId,
   };
 
   return (

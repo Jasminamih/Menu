@@ -1,11 +1,11 @@
+import HomeTemplate from "@/components/templates/HomeTemplate/HomeTemplate";
 import { MainContext } from "@/context/MainContext";
 import { CategoryInterface } from "@/interfaces/CategoryInterface";
 import { CompanyInterface } from "@/interfaces/CompanyInterface";
-import HomeTemplate from "@/components/templates/HomeTemplate/HomeTemplate";
 import axios from "axios";
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 
 interface Props {
   categories: CategoryInterface[];
@@ -13,9 +13,22 @@ interface Props {
 }
 
 const Home: FC<Props> = ({ categories, company }) => {
-  const { setCompany, setCategories } = useContext(MainContext);
-  setCompany(company);
-  setCategories(categories);
+  const {
+    setCompany,
+    setCategories,
+    setSelectedCategoryId,
+    selectedCategoryId,
+  } = useContext(MainContext);
+
+  useEffect(() => {
+    setCompany(company);
+    setCategories(categories);
+    setSelectedCategoryId(
+      selectedCategoryId || categories
+        ? selectedCategoryId || categories[0].id
+        : null
+    );
+  }, []);
 
   return (
     <>
@@ -43,5 +56,6 @@ export const getStaticProps: GetStaticProps = async () => {
       company: company.data,
       categories: categories.data,
     },
+    revalidate: 1,
   };
 };

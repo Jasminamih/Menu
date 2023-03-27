@@ -1,12 +1,12 @@
+import ProductTemplate from "@/components/templates/ProductTemplate/ProductTemplate";
 import { MainContext } from "@/context/MainContext";
 import { CategoryInterface } from "@/interfaces/CategoryInterface";
 import { CompanyInterface } from "@/interfaces/CompanyInterface";
 import { ProductsInterface } from "@/interfaces/ProductsInterface";
-import ProductTemplate from "@/components/templates/ProductTemplate/ProductTemplate";
 import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useEffect } from "react";
 
 interface Props {
   products: ProductsInterface[];
@@ -15,10 +15,24 @@ interface Props {
 }
 
 const CategoryPage: FC<Props> = ({ products, categories, company }) => {
-  const { setProducts, setCategories, setCompany } = useContext(MainContext);
-  setProducts(products);
-  setCategories(categories);
-  setCompany(company);
+  const {
+    setProducts,
+    setCategories,
+    setCompany,
+    setSelectedCategoryId,
+    selectedCategoryId,
+  } = useContext(MainContext);
+
+  useEffect(() => {
+    setProducts(products);
+    setCompany(company);
+    setCategories(categories);
+    setSelectedCategoryId(
+      selectedCategoryId || categories
+        ? selectedCategoryId || categories[0].id
+        : null
+    );
+  }, []);
 
   return (
     <>
@@ -53,7 +67,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const API_URL = process.env.API_URL;
 
   if (params && params.id) {
-    const products = await axios.get(`${API_URL}/categorieForProducts/${params.id}`);
+    const products = await axios.get(
+      `${API_URL}/categorieForProducts/${params.id}`
+    );
     const company = await axios.get(`${API_URL}/companie`);
     const categories = await axios.get(`${API_URL}/menu`);
 
@@ -69,6 +85,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         company: company.data,
         categories: categories.data,
       },
+      revalidate: 1,
     };
   }
 
