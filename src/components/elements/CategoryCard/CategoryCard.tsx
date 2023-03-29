@@ -1,10 +1,12 @@
-import React, { FC, useEffect, useState } from "react";
-import styles from "./CategoryCard.module.scss";
-import Image from "next/image";
 import { F_Roboto } from "@/fonts";
-import "animate.css";
-import Link from "next/link";
 import { CategoryInterface } from "@/interfaces/CategoryInterface";
+import Image from "next/image";
+import Link from "next/link";
+import React, { FC, useEffect, useState } from "react";
+
+import styles from "./CategoryCard.module.scss";
+
+import "animate.css";
 
 interface Props {
   index: number;

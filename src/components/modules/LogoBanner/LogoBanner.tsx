@@ -11,7 +11,7 @@ const Logo: FC = () => {
 
   return (
     <div className={`${styles.logoWrapper} ${F_Roboto.className}`}>
-      <Image fill src={`${IMAGES_URL}/${company?.logoPath}`} alt={"Company logo"} />
+      <Image fill src={`${IMAGES_URL}/${company?.logoPath}`} alt={"Company logo"} priority />
       <select className={styles.language} name="" id="">
         <option value="">English</option>
         <option value="">Macedonian</option>
