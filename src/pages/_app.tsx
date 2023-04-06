@@ -9,10 +9,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
    <LanguageContextProvider>
-
       <MainContextProvider>
         <Component {...pageProps} />
-        
       </MainContextProvider>
       </LanguageContextProvider>
     </>

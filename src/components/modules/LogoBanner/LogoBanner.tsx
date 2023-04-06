@@ -11,8 +11,6 @@ const Logo: FC = () => {
   const { language, setLanguage } = useContext(LanguageContext);
   const IMAGES_URL = process.env.NEXT_PUBLIC_IMAGES_URL;
 
-  console.log(language);
-
   return (
     <div className={`${styles.logoWrapper} ${F_Roboto.className}`}>
       <Image
