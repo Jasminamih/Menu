@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "nomad-cloud.in",
+        hostname: "brainsterlabs.com",
         pathname: "/storage/**",
       },
     ],

@@ -22,14 +22,18 @@ export const MainContext = createContext<MainContextProps>({
   setCompany: () => {},
   setCategories: () => {},
   setProducts: () => {},
-  setSelectedCategoryId: () => {}
+  setSelectedCategoryId: () => {},
 });
 
 export const MainContextProvider = ({ children }: any) => {
   const [company, setCompany] = useState<CompanyInterface | null>(null);
-  const [categories, setCategories] = useState<CategoryInterface[] | null>(null);
+  const [categories, setCategories] = useState<CategoryInterface[] | null>(
+    null
+  );
   const [products, setProducts] = useState<ProductsInterface[] | null>(null);
-  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
+    null
+  );
   const initialContextValue = {
     company,
     categories,

@@ -5,12 +5,14 @@ import React, { FC, useContext, useEffect } from "react";
 import { FaWifi } from "react-icons/fa";
 import { TbPhone } from "react-icons/tb";
 import { TfiLocationPin } from "react-icons/tfi";
-
 import styles from "./CompanyDetails.module.scss";
+import { LanguageContext } from "@/context/LanguageContext";
 
 const CompanyDetails: FC = () => {
   const { categories, company, selectedCategoryId, setSelectedCategoryId } =
     useContext(MainContext);
+
+  const { language } = useContext(LanguageContext);
   const { push } = useRouter();
 
   return (
@@ -41,7 +43,9 @@ const CompanyDetails: FC = () => {
               }}
               key={item.id + "category button"}
             >
-              {item.categorieMenu}
+              {language === "english"
+                ? item.categorieMenuEn
+                : item.categorieMenu}
             </button>
           );
         })}

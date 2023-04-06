@@ -6,6 +6,8 @@ export interface ProductsInterface {
     productPicturePath: string;
     price: string;
     weightProduct: string
+    nameProductEn: string;
+descriptionEn: string
 
   }
   
