@@ -37,7 +37,7 @@ const ItemCard: FC<Props> = ({ category }) => {
               : category.description}
           </p>
           <span className={styles.weight}>{category.weightProduct}</span>
-          <span className={styles.price}>{category.price}den</span>
+          <span className={styles.price}>{category.price}ден</span>
         </div>
       </div>
 
